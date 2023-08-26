@@ -12,6 +12,8 @@ export class ToDoService {
     name: "Bread",
     quantity: 1
   }];
+  rewards=[{name: "5 minute break"},
+{name: "Snack time"}];
   constructor() { 
     console.log('Hello ToDo Provider')
   }
@@ -26,6 +28,18 @@ export class ToDoService {
   }
   editItem(item: any, index: number){
     this.items[index] = item;
+  }
+  getRewards(){
+    return this.rewards;
+  }
+  addRewards(reward: any){
+    this.rewards.push(reward);
+  }
+  editRewards(reward: any, index: number){
+    this.rewards[index]= reward; 
+  }
+  removeRewards(index: number){
+    this.rewards.splice(index,1);
   }
 }
 
