@@ -16,14 +16,16 @@ export class Tab1Page {
 
   title = "To Do List";
   errorMessage: string | undefined;
-
+  rewards = this.loadRewards();
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, public alertCtrl: AlertController, public dataService: ToDoService, public inputDialogService: InputDialogService) {}
 
   loadItems(){
     return this.dataService.getItems();
   }
-  
+  loadRewards(){
+    return this.dataService.getRewards();
+  }
   async removeItem(item: { name: string; }, index: number){
     console.log("Removing Item - ", item)
     const toast = await this.toastCtrl.create({
@@ -58,5 +60,11 @@ export class Tab1Page {
     console.log("Adding Item");
     this.inputDialogService.showPrompt();
   }
-
+  seeReward(reward: any | null){
+    if(reward = null){
+      this.inputDialogService.showRewards();
+    }else if(reward != null){
+      this.inputDialogService.showRewards(reward);
+    }
+  }
 }

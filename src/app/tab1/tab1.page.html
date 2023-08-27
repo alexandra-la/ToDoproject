@@ -18,12 +18,16 @@
     </h3>
     </div>
     <ion-list>
-      <ion-item-sliding  *ngFor="let item of loadItems(); let i = index">
+      <ion-item-sliding  *ngFor="let item of loadItems(); let i = index;" >
         <ion-item>
           <h2>{{item.name}}</h2>
-          <p>{{item.quantity}}</p>
+          <p>{{rewards[i].name}}</p>
         </ion-item>
       <ion-item-options>
+        <button (click)="seeReward(rewards[i])" ion-button color=" primary" icon-start>
+          <ion-icon name="gift"></ion-icon>
+          Reward
+        </button>
         <button (click)="editItem(item, i)" ion-button color="primary" icon-start>
           <ion-icon name="create"></ion-icon>
           Edit
